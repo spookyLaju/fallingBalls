@@ -1,4 +1,5 @@
 import turtle
+import random 
 
 
 #create the environment of the game 
@@ -7,6 +8,8 @@ root.title('falling balls')
 root.bgcolor('black')
 root.setup(width=500, height=500)
 root.tracer(0)
+
+random_y = random.randint(-500, 500)
 
 
 
@@ -24,12 +27,13 @@ container.goto(0,-100 )
 #create  the falling balls 
 
 balls = turtle.Turtle()
-balls.speed(0.2)
+balls.speed(0)
 balls.shape('circle')
 balls.color('red')
 balls.penup()
-balls.setx(0)
-balls.sety(240)
+balls.goto(random_y,300)
+balls.dy = -0.1
+
 
 # functions 
 
@@ -56,6 +60,26 @@ root.onkeypress(conatainerMoveLeft, 'a')
 #to loop the window 
 while True:
     root.update()
+    #movement loop for the ball 
+    balls.sety(balls.ycor() + balls.dy)   
+
+    #loop the movement of the ball 
+    if balls.ycor() <= - 490:
+        balls.goto(random_y,240)
+
+        
 
 
+
+
+
+
+
+
+
+
+   
+
+    
+   
     
